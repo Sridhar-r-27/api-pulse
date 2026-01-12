@@ -58,7 +58,7 @@ app.get('/health', (req, res) => {
 });
 
 // Step 9: Start the server
-app.listen(PORT, () => {
+app.listen(PORT,'0.0.0.0', () => {
   console.log(`✅ Server is running on http://localhost:${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV}`);
   console.log(`🔥 Press CTRL+C to stop the server`);
