@@ -33,15 +33,11 @@ app.use(cors());
 // Step 5: Connect to MongoDB
 connectDB();
 
-// Step 6: Start API monitoring scheduler
-// This will test APIs automatically every 5 minutes
-startScheduler();
-
-// Step 7: API Routes - mount the routes
+// Step 6: API Routes - mount the routes
 app.use('/api', apiTestRoutes);
 app.use('/api/scheduler', schedulerRoutes);
 
-// Step 8: Basic Routes
+// Step 7: Basic Routes
 app.get('/', (req, res) => {
   res.json({ 
     message: 'Welcome to API Pulse! 🚀',
@@ -61,12 +57,16 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Step 9: Start the server
+// Step 8: Start the server
 app.listen(PORT,'0.0.0.0', () => {
   console.log(`✅ Server is running on http://localhost:${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV}`);
   console.log(`🔥 Press CTRL+C to stop the server`);
 });
+
+// Step 9: Start API monitoring scheduler
+// This will test APIs automatically every 5 minutes
+startScheduler();
 
 // Step 10: Error handling
 process.on('unhandledRejection', (err) => {
