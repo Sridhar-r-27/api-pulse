@@ -22,6 +22,10 @@ const app = express();
 // Step 3: Get port from environment
 const PORT = process.env.PORT || 5000;
 
+console.log('🐛 DEBUG: process.env.PORT =', process.env.PORT);
+console.log('🐛 DEBUG: Final PORT =', PORT);
+console.log('🐛 DEBUG: All env keys =', Object.keys(process.env).filter(k => k.includes('PORT')));
+
 // Step 4: Middleware
 app.use(express.json());
 app.use(cors());
