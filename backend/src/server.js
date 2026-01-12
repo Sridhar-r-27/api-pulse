@@ -62,11 +62,13 @@ app.listen(PORT,'0.0.0.0', () => {
   console.log(`✅ Server is running on http://localhost:${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV}`);
   console.log(`🔥 Press CTRL+C to stop the server`);
-});
 
-// Step 9: Start API monitoring scheduler
+  // Step 9: Start API monitoring scheduler
 // This will test APIs automatically every 5 minutes
 startScheduler();
+
+});
+
 
 // Step 10: Error handling
 process.on('unhandledRejection', (err) => {
