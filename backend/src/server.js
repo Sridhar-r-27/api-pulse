@@ -64,16 +64,25 @@ app.get('/health', (req, res) => {
 });
 
 // Step 8: Start the server
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`✅ Server is running on port ${PORT}`);
+const server = app.listen(PORT, '0.0.0.0', () => {
+  const address = server.address();
+  console.log(`✅ Server is running on ${address.address}:${address.port}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV}`);
   console.log(`🔥 Press CTRL+C to stop the server`);
   
-  // Step 9: Start scheduler after a 2 second delay to let server stabilize
+  // Step 9: Start scheduler after a 2 second delay
   setTimeout(() => {
     console.log('⏰ Starting scheduler...');
     startScheduler();
   }, 2000);
+});
+
+server.on('error', (err) => {
+  console.error('❌ Server error:', err);
+});
+
+server.on('listening', () => {
+  console.log('🎧 Server is now listening for connections');
 });
 
 
