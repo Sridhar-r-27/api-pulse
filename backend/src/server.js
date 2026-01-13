@@ -30,6 +30,12 @@ console.log('🐛 DEBUG: All env keys =', Object.keys(process.env).filter(k => k
 app.use(express.json());
 app.use(cors());
 
+// Add request logging
+app.use((req, res, next) => {
+  console.log(`📨 Incoming request: ${req.method} ${req.path}`);
+  next();
+});
+
 // Step 5: Connect to MongoDB
 connectDB();
 
