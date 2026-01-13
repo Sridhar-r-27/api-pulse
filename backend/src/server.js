@@ -64,15 +64,16 @@ app.get('/health', (req, res) => {
 });
 
 // Step 8: Start the server
-app.listen(PORT,'0.0.0.0', () => {
-  console.log(`✅ Server is running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`✅ Server is running on port ${PORT}`);
   console.log(`📊 Environment: ${process.env.NODE_ENV}`);
   console.log(`🔥 Press CTRL+C to stop the server`);
-
-  // Step 9: Start API monitoring scheduler
-// This will test APIs automatically every 5 minutes
-startScheduler();
-
+  
+  // Step 9: Start scheduler after a 2 second delay to let server stabilize
+  setTimeout(() => {
+    console.log('⏰ Starting scheduler...');
+    startScheduler();
+  }, 2000);
 });
 
 
