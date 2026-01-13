@@ -29,6 +29,10 @@ console.log('🐛 DEBUG: All env keys =', Object.keys(process.env).filter(k => k
 // Step 4: Middleware
 app.use(express.json());
 app.use(cors());
+app.get('/ping', (req, res) => {
+  console.log('🏓 PING received!');
+  res.send('PONG');
+});
 
 // Add request logging
 app.use((req, res, next) => {
